@@ -19,10 +19,8 @@ public class Movie {
     @Column(name = "movie_id")
     private Integer movieId;
 
-    @Column(name = "movie_name")
-    private String movieName;
+    private String title;
     private String genre;
-
-    @Column(name = "start_time")
-    private LocalDateTime startTime;
+    @Column(name = "age_restriction")
+    private Integer ageRestriction;
 }

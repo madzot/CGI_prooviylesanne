@@ -85,6 +85,8 @@
 
             ></v-combobox>
           </v-card-item>
+          <v-divider/>
+          <v-btn onclick="">Search</v-btn>
         </v-card>
       </v-container>
     </v-main>
@@ -98,8 +100,30 @@ export default {
     genres: [],
     age: null,
     language: null,
-    timeRange: null,
-  })
+    timeRange: [],
+  }),
+  methods: {
+    emitFilters() {
+      this.emitter.emit("ageRestriction", {msg: this.age})
+      this.emitter.emit("genre", {msg: this.genres})
+      this.emitter.emit("language", {msg: this.language})
+      this.emitter.emit("startTime", {msg: this.timeRange})
+    },
+  },
+  watch: {
+    age(n, o) {
+      this.emitFilters()
+    },
+    language() {
+      this.emitFilters()
+    },
+    timeRange() {
+      this.emitFilters()
+    },
+    genres() {
+      this.emitFilters()
+    }
+  }
 }
 </script>
 

@@ -2,12 +2,12 @@
   <v-layout>
     <v-main>
       <v-container>
-        <v-card>
+        <v-card @click.once="this.$router.push('/seats')">
           <v-card-title>
             {{ this.movieName }}
           </v-card-title>
           <v-card-subtitle>
-            {{ this.startTime }}
+            {{ this.genre }}
           </v-card-subtitle>
         </v-card>
       </v-container>
@@ -22,6 +22,7 @@ export default {
     'startTime',
     'genre',
     'ageLimit',
+    'language',
   ],
   name: "MovieCard",
   movieName: null,

@@ -1,15 +1,13 @@
 package com.cgi.controller;
 
 import com.cgi.dtos.FilterDto;
+import com.cgi.dtos.MovieDto;
 import com.cgi.repository.Movie;
 import com.cgi.service.MovieService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +17,8 @@ import java.util.List;
 public class MovieController {
     private final MovieService movieService;
 
-    @GetMapping(path = "/api/movies")
-    public ResponseEntity<List<Movie>> getMovies(@Valid @RequestBody List<FilterDto> filterDtoList) {
-        return ResponseEntity.ok().body(movieService.getMoviesByFilter(filterDtoList));
+    @PostMapping(path = "/api/movies")
+    public ResponseEntity<List<MovieDto>> getMovies(@Valid @RequestBody List<FilterDto> filterDtoList) {
+        return ResponseEntity.ok().body(movieService.getMovies());
     }
 }
